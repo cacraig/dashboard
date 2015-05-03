@@ -1,0 +1,79 @@
+<html lang="en" ng-app="app">
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+  </head>
+
+  <body ng-controller="UserAppCtrl" ng-init="Init()">
+
+    <div class="container">
+
+      <ul>
+        <li ng-repeat="user in users" >
+
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-4">
+              <img src="{{user.avatar}}" name="{{user.name}}" fallback-img-src> </img>
+            </div>
+            <div class="col-sm-8">
+              <div class="user-desc name">
+                {{user.name}}
+              </div>
+              <div class="user-desc occupation">
+                {{user.occupation}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-8">
+              <div style="max-height:150px;">
+                <canvas chart type="Line" options="options" data="user.lineData" width="chartWidth" height="chartHeight"></canvas>
+              </div>
+              <div style="text-align: center;"> {{user.startDate}} to {{user.endDate}} </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="row">
+                <div class="user-desc impressions pull-right">{{user.num_impressions}}</div>
+              </div>
+              <div class="row">
+                <div class="description pull-right"> Impressions </div>
+              </div>
+              <div class="row">
+                <div class="user-desc conversions pull-right">{{user.num_conversions}}</div>
+              </div>
+              <div class="row">
+                <div class="description pull-right"> Conversions </div>
+              </div>
+              <div class="row">
+                <div class="user-desc revenue pull-right">{{user.revenue | currency}}</div>
+              </div>
+            </div>
+
+          </div>
+
+          </div>
+        </li>
+      </ul>
+
+    </container>
+
+  </body>
+  
+  <!-- Vendor libs -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script> 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+  <script type="text/javascript" src="app/vendor/angles.js"></script>
+
+  <!-- Application JS -->
+  <script type="text/javascript" src="app/app.js"></script>
+  <script type="text/javascript" src="app/controllers/UserAppCtrl.js"></script>
+  <script type="text/javascript" src="app/directives/fallbackImgSrc.js"></script>
+
+</html>
